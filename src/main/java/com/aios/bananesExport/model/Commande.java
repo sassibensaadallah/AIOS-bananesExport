@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Commande {
 	@Id
@@ -17,6 +20,7 @@ public class Commande {
 	private String date;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "destinataire_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Destinataire destinataire;
 	public Long getCommandeId() {
 		return commandeId;
