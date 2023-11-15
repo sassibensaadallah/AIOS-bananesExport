@@ -93,16 +93,21 @@ public class CommandeControlleur {
 		return new ResponseEntity<>(commandRepo.save(commande), HttpStatus.OK);
 	}
 
-	private long calculatedateDifferences(String date) {
+	public long calculatedateDifferences(String date) {
+		System.out.println("Heere");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		long daysBetween = 0;
 		try {
+			System.out.println("Heere1");
 			LocalDate date1 = LocalDate.parse(date, dtf);
 			LocalDate date2 = LocalDate.parse(LocalDate.now().toString(), dtf);
+			System.out.println("Heere2");
 			daysBetween = ChronoUnit.DAYS.between(date2, date1);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Heere3");
 		}
+		System.out.println("Heere4");
 		return daysBetween;
 	}
 }
